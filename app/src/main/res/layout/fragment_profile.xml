@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="dk.harj_it.leoinnovationlabtest.MainViewModel" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:background="@android:color/white"
+            android:elevation="9dp"
+            android:gravity="center"
+            android:text="@{@string/main_no_username_specified}"
+            android:visibility="@{vm.username.empty || vm.username == null ? View.VISIBLE : View.GONE}"
+            tools:text="Enter a username\nymerdrengene"
+            tools:visibility="gone" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:background="@android:color/white"
+            android:elevation="9dp"
+            android:gravity="center"
+            android:text="@{@string/profile_no_profile_found(vm.username)}"
+            android:visibility="@{vm.showError ? View.VISIBLE : View.GONE}"
+            tools:text="Could not find any profile with username:\nymerdrengene"
+            tools:visibility="gone" />
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="@{vm.loading ? View.VISIBLE : View.GONE}" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:visibility="@{vm.loading ? View.GONE : View.VISIBLE}">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    app:imageUrl="@{vm.user.avatarUrl}"
+                    tools:src="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@{vm.user.name}"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                    tools:text="Harjit Singh Sahota" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:cardCornerRadius="4dp"
+                    app:cardElevation="8dp"
+                    app:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            style="@style/ProfileInfoStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0dp"
+                            android:drawableStart="@drawable/ic_location"
+                            android:text="@{vm.user.location ?? @string/profile_no_location}"
+                            tools:text="Copenhagen" />
+
+                        <TextView
+                            style="@style/ProfileInfoStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_business"
+                            android:text="@{vm.user.company ?? @string/profile_no_company}"
+                            tools:text="LEO Innovation Lab" />
+
+                        <TextView
+                            style="@style/ProfileInfoStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_followers"
+                            android:text="@{@string/profile_followers(vm.user.followers)}"
+                            tools:text="3" />
+
+                        <TextView
+                            style="@style/ProfileInfoStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_following"
+                            android:text="@{@string/profile_following(vm.user.following)}"
+                            tools:text="3" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/profileGithubProfileButton"
+                    style="@style/Widget.MaterialComponents.Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:drawablePadding="16dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/profile_button_go_to_profile"
+                    app:icon="@drawable/ic_person"
+                    app:iconPadding="16dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/profileEmailButton"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="@{vm.user.email != null}"
+                    android:drawablePadding="16dp"
+                    android:enabled="@{vm.user.email != null}"
+                    android:focusable="@{vm.user.email != null}"
+                    android:gravity="center_vertical"
+                    android:text="@string/profile_button_send_email"
+                    app:icon="@drawable/ic_email_black"
+                    app:iconPadding="16dp" />
+
+            </LinearLayout>
+
+        </ScrollView>
+    </FrameLayout>
+
+</layout>

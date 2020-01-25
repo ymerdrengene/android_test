@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_profile"
+        android:icon="@drawable/ic_person"
+        android:title="@string/bottom_navigation_profile" />
+
+    <item
+        android:id="@+id/navigation_repositories"
+        android:icon="@drawable/ic_repository"
+        android:title="@string/bottom_navigation_repositories" />
+
+</menu>

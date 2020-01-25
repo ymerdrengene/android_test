@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Leo Innovation Lab Test</string>
+
+    <!-- MainActivity-->
+    <string name="activity_main_title">MainActivity</string>
+    <string name="main_search_hint">Enter a Github username</string>
+    <string name="main_no_username_specified">Press the loop icon and enter a Github username</string>
+    <string name="bottom_navigation_profile">Profile</string>
+    <string name="bottom_navigation_repositories">Repositories</string>
+
+    <!-- Profile-->
+    <string name="profile_button_go_to_profile">Go to Github profile</string>
+    <string name="profile_button_send_email">Send email</string>
+    <string name="profile_no_location">No location specified</string>
+    <string name="profile_no_company">No company specified</string>
+    <string name="profile_followers">%s followers</string>
+    <string name="profile_following">%s following</string>
+    <string name="profile_no_profile_found">Could not find any profile with username:\n%s</string>
+    <string name="profile_no_repository_found">Could not find any repositories with username:\n%s</string>
+
+    <!-- Repositories-->
+    <string name="repository_copy_git_url">Copy GIT url</string>
+    <string name="repository_copied_git_url">Git url has been copied to your clipboard</string>
+    <string name="profile_choose_email">Choose email</string>
+</resources>
