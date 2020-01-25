@@ -1,4 +1,4 @@
-package dk.harj_it.utils
+package dk.harj_it.leoinnovationlabtest.utils
 
 import android.graphics.drawable.ColorDrawable
 import android.widget.ImageView
