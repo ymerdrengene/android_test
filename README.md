@@ -1,6 +1,4 @@
-# LEO Innovation Lab Test
-
-This is an Android assignment for Harjit provided by Kevin Pelgrims.
+# Test
 
 ## Installation
 
